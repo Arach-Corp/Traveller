@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template2.xhtml">
+	<ui:define name="title">Cadastrar</ui:define>
+	<ui:define name="content">
+
+		<p>
+<!--			<h1>TRAVELLER</h1>-->
+		</p>
+		<p>
+<!--			<h3>Pontos turísticos</h3>-->
+		</p>
+
+
+		<p:tab title="Pontos turísticos">
+			<h:form id="pontos_lista">
+				<p:dataTable var="ponto" value="#{pontoBean.pontosCadastrados}"
+					showGridlines="true" id="pontoTable">
+					<p:column headerText="ID">
+						<h:outputText value="#{ponto.id}" />
+					</p:column>
+					<p:column headerText="Nome">
+						<h:outputText value="#{ponto.nome}" />
+					</p:column>
+					<p:column headerText="Editar">
+						<p:commandLink type="button" icon="pi pi-search"
+							styleClass="rounded-button ui-button-success ui-button-flat"
+							action="edit.xhtml">Editar 
+							<f:setPropertyActionListener value="#{ponto}"
+								target="#{pontoBean.pontoTuristico}" />
+						</p:commandLink>
+
+					</p:column>
+					<p:column headerText="Deletar">
+						<p:commandButton type="button" icon="pi pi-times"
+							styleClass="rounded-button ui-button-danger ui-button-flat"	action="${pontoBean.excluir}">
+							<f:setPropertyActionListener value="#{ponto}" 
+								target="#{pontoBean.pontoTuristico}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:tab>
+	</ui:define>
+
+
+</ui:composition>
+</html>

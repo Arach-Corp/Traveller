@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="title">Login</ui:define>
+	<ui:define name="content">
+
+
+		<p:growl id="statusMessage" showDetail="false">
+			<p:autoUpdate />
+		</p:growl>
+		<div class="card login-container">
+			<h:form>
+				<h1>TRAVELLER</h1>
+				<h2>LOGIN</h2>
+				<div class="field-login-container">
+					<span class="ui-float-label"> <p:inputText id="float-input"
+							value="#{usuarioBean.usuario.email}"
+							requiredMessage="E-mail inválido" autocomplete="false"
+							required="true">
+							<f:validateRegex
+								pattern="^[A-z0-9_.]+@[A-z0-9]+\.[A-z]{2,}(\.[A-z]+)?$" />
+							<f:ajax event="keyup" render="statusMessage" />
+						</p:inputText> <p:outputLabel for="@previous" value="Username" />
+					</span>
+				</div>
+				<div class="field-login-container">
+					<span class="ui-float-label"> <p:password id="float-inputt"
+							toggleMask="true" value="#{usuarioBean.usuario.password}"
+							redisplay="true" required="true"
+							requiredMessage="Password field must be filled"
+							validatorMessage="Minimun of 6 characters">
+							<f:validateLength minimum="6" message="Mínimo" />
+							<f:ajax event="blur" render="statusMessage" />
+						</p:password> <p:outputLabel for="@previous" value="Password"
+							class="classeclasse" />
+					</span>
+				</div>
+
+				<div class="button-login-container">
+					<p:growl id="growl" life="2000" />
+
+					<p:commandLink id="nonAjax" action="home.xhtml"
+						style="margin-right:20px;" ajax="false">
+						<h:outputText value="Não possui uma conta? Clique aqui!" />
+					</p:commandLink>
+
+					<p:commandButton value="Login" icon="pi pi-save"
+						class="button-login" update="statusMessage"
+						action="#{usuarioBean.login}" />
+				</div>
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footer">
+	</ui:define>
+</ui:composition>
+
+
+</html>

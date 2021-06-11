@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+<!--<persistence version="1.0"-->
+<!--             xmlns="http://java.sun.com/xml/ns/persistence">-->
+
+    <persistence-unit name="postgres" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>br.com.fiap.traveller.entities.Avaliacao</class>
+        <class>br.com.fiap.traveller.entities.Usuario</class>
+        <class>br.com.fiap.traveller.entities.Categoria</class>
+        <class>br.com.fiap.traveller.entities.PontoTuristico</class>
+        <class>br.com.fiap.traveller.entities.Endereco</class>
+        <class>br.com.fiap.traveller.entities.Dica</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres" /> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="root" /> <!-- DB Password -->
+
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/> <!-- DB Dialect -->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- create / create-drop / update -->
+
+            <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
+            <property name="hibernate.format_sql" value="true" /> <!-- Show SQL formatted -->
+        </properties>
+    </persistence-unit>
+
+</persistence>

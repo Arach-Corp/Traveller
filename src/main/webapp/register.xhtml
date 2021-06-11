@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template2.xhtml">
+	<ui:define name="title">Cadastrar</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="statusMessage" showDetail="false">
+				<p:autoUpdate />
+			</p:growl>
+
+			<div class="formulario-container">
+				<p>
+					<h1>TRAVELLER</h1>
+				</p>
+				<p>
+					<h3>Adicionar Ponto turístico</h3>
+				</p>
+
+				<div class="p-field">
+					<p:outputLabel for="nome-ponto" styleClass="p-d-block">Nome</p:outputLabel>
+					<p:inputText id="nome-ponto" styleClass="p-d-block "
+						requiredMessage="O campo nome não pode ser nulo e precisa de no mínimo 6 dígitos"
+						validatorMessage="Minimum of 6 characters" autocomplete="false"
+						required="true" value="#{pontoBean.pontoTuristico.nome}">
+						<f:validateLength minimum="6" />
+						<f:ajax event="blur" render="statusMessage" />
+					</p:inputText>
+					<p:message for="@previous" />
+				</div>
+				<div class="p-field ">
+					<p:outputLabel for="ponto-categoria" styleClass="p-d-block">Categoria</p:outputLabel>
+					<p:inputText id="ponto-categoria" styleClass="p-d-block "
+						requiredMessage="O campo categoria não pode ser nulo e precisa de no mínimo 6 dígitos"
+						validatorMessage="Minimum of 6 characters" autocomplete="false"
+						required="true"
+						value="#{pontoBean.pontoTuristico.categoria.descricao}">
+						<f:validateLength minimum="6" />
+						<f:ajax event="blur" render="statusMessage" />
+					</p:inputText>
+					<p:message for="@previous" />
+				</div>
+
+				<div class="p-field	">
+
+					<p:outputLabel for="ponto-funcionamento" styleClass="p-d-block">Funcionamento</p:outputLabel>
+					<p:inputText id="ponto-funcionamento" styleClass="p-d-block "
+						requiredMessage="O campo funcionamento não pode ser nulo e precisa de no mínimo 6 dígitos"
+						validatorMessage="Minimum of 6 characters" autocomplete="false"
+						required="true"
+						value="#{pontoBean.pontoTuristico.horarioFuncionamento}">
+						<f:ajax event="blur" render="statusMessage" />
+						<f:validateLength minimum="6" />
+					</p:inputText>
+					<p:message for="@previous" />
+				</div>
+				<div class="p-field">
+					<p:selectBooleanCheckbox
+						value="#{pontoBean.pontoTuristico.acessivelPCD}"
+						itemLabel="Acessível para PCD" />
+				</div>
+				<div class="p-field ">
+					<p:outputLabel for="input2" value="Custo" />
+					<p:inputNumber id="input2"
+						value="#{pontoBean.pontoTuristico.preco}" symbol=" R$"
+						symbolPosition="s" decimalSeparator="," thousandSeparator=".">
+					</p:inputNumber>
+				</div>
+				<div class="p-field">
+					<p:outputLabel for="descricao-ponto" value="Descrição" />
+					<p:inputTextarea id="descricao-ponto" rows="10" cols="50"
+						completeMethod="#{inputTextareaView.completeArea}"
+						queryDelay="750" minQueryLength="4"
+						requiredMessage="O campo descrição não pode ser nulo e precisa de no mínimo 30 dígitos"
+						autocomplete="false">
+
+						<f:ajax event="blur" render="statusMessage" />
+						<f:validateLength minimum="6" />
+						<p:ajax event="itemSelect"
+							listener="#{inputTextareaView.onSelect}" />
+					</p:inputTextarea>
+					<p:message for="@previous" />
+				</div>
+				<div class="p-field">
+					<p:outputLabel for="ponto-link" styleClass="p-d-block">Site oficial</p:outputLabel>
+					<p:inputText id="ponto-link" styleClass="p-d-block "
+						redisplay="false" required="true"
+						requiredMessage="O campo deve ser preenchido."
+						validatorMessage="Mínimo de 6 caracteres."
+						value="#{pontoBean.pontoTuristico.urlSiteOficial}">
+						<f:ajax event="blur" render="statusMessage" />
+						<f:validateLength minimum="6" />
+					</p:inputText>
+					<p:message for=" @previous" />
+				</div>
+				<div class="p-field">
+					<p:outputLabel for="ponto-foto" styleClass="p-d-block">URL foto</p:outputLabel>
+					<p:inputText id="ponto-foto" styleClass="p-d-block "
+						redisplay="false" required="true"
+						requiredMessage="O campo deve ser preenchido."
+						validatorMessage="Mínimo de 6 caracteres."
+						value="#{pontoBean.pontoTuristico.urlFoto}">
+						<f:ajax event="blur" render="statusMessage" />
+						<f:validateLength minimum="6" />
+					</p:inputText>
+					<p:message for=" @previous" />
+				</div>
+
+				<div class="p-field ponto-endereco">
+					<div class="">
+						<p:outputLabel for="ponto-endereco-log" styleClass="p-d-block">Endereço</p:outputLabel>
+						<p:inputText id="ponto-endereco-log" styleClass="p-d-block "
+							redisplay="false" required="true"
+							requiredMessage="O campo deve ser preenchido."
+							validatorMessage="Mínimo de 6 caracteres."
+							value="#{pontoBean.pontoTuristico.endereco.logradouro}">
+							<f:ajax event="blur" render="statusMessage" />
+							<f:validateLength minimum="6" />
+						</p:inputText>
+						<p:message for=" @previous" />
+					</div>
+					<div class="">
+						<p:outputLabel for="ponto-endereco-log-num" styleClass="p-d-block">Número</p:outputLabel>
+						<p:inputText id="ponto-endereco-log-num"
+							styleClass="p-d-block endereco-num" type="number"
+							redisplay="false" required="true"
+							requiredMessage="O campo deve ser preenchido."
+							validatorMessage="Mínimo de 6 caracteres."
+							value="#{pontoBean.pontoTuristico.endereco.numero}">
+							<f:ajax event="blur" render="statusMessage" />
+							<f:validateLength minimum="6" />
+						</p:inputText>
+						<p:message for=" @previous" />
+					</div>
+				</div>
+				<div class="p-field ponto-endereco">
+					<div class="container-endereco-num-end">
+						<div class="">
+							<p:outputLabel for="ponto-endereco-cidade" styleClass="p-d-block">Cidade</p:outputLabel>
+							<p:inputText id="ponto-endereco-cidade" styleClass="p-d-block "
+								redisplay="false" required="true"
+								requiredMessage="O campo deve ser preenchido."
+								validatorMessage="Mínimo de 6 caracteres."
+								value="#{pontoBean.pontoTuristico.endereco.cidade}">
+								<f:ajax event="blur" render="statusMessage" />
+								<f:validateLength minimum="6" />
+							</p:inputText>
+							<p:message for=" @previous" />
+
+						</div>
+						<div class="">
+							<p:outputLabel for="ponto-endereco-estado" styleClass="p-d-block">Estado</p:outputLabel>
+							<p:inputText id="ponto-endereco-estado" styleClass="p-d-block "
+								redisplay="false" required="true"
+								requiredMessage="O campo deve ser preenchido."
+								validatorMessage="Mínimo de 6 caracteres."
+								value="#{pontoBean.pontoTuristico.endereco.estado}">
+								<f:ajax event="blur" render="statusMessage" />
+								<f:validateLength minimum="6" />
+							</p:inputText>
+							<p:message for=" @previous" />
+
+						</div>
+					</div>
+
+
+					<div class="ponto-endereco-field">
+						<p:outputLabel for="ponto-endereco-log-cep" styleClass="p-d-block">CEP</p:outputLabel>
+						<p:inputText id="ponto-endereco-log-cep" styleClass="p-d-block "
+							type="number" redisplay="false" required="true"
+							requiredMessage="O campo deve ser preenchido."
+							validatorMessage="Mínimo de 6 caracteres."
+							value="#{pontoBean.pontoTuristico.endereco.cep}">
+							<f:ajax event="blur" render="statusMessage" />
+							<f:validateLength minimum="6" />
+						</p:inputText>
+						<p:message for=" @previous" />
+
+					</div>
+					<div class="ponto-endereco-field">
+						<p:outputLabel for="ponto-endereco-log-complemento"
+							styleClass="p-d-block">Complemento</p:outputLabel>
+						<p:inputText id="ponto-endereco-log-complemento"
+							styleClass="p-d-block" redisplay="false" required="true"
+							requiredMessage="O campo deve ser preenchido."
+							validatorMessage="Mínimo de 6 caracteres."
+							value="#{pontoBean.pontoTuristico.endereco.complemento}">
+							<f:ajax event="blur" render="statusMessage" />
+							<f:validateLength minimum="6" />
+						</p:inputText>
+						<p:message for=" @previous" />
+
+					</div>
+				</div>
+			</div>
+
+			<div class="botao-ponto-criar-container">
+
+				<p:commandButton value="Criar" icon="pi pi-save"
+					class="botao-ponto-criar" update="statusMessage"
+					action="#{pontoBean.criar}" />
+			</div>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>
+</html>

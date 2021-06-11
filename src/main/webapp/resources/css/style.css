@@ -1,0 +1,167 @@
+@charset "ISO-8859-1";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+	;
+
+.sidebar-button {
+	background: #00a884 !important;
+	border-color: #00a884 !important;
+	margin: 1% !important;
+}
+
+body .ui-sidebar .ui-sidebar-close {
+	height: 0 !important;
+}
+
+.title-sidebar-container {
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
+
+.title-sidebar {
+	text-align: center;
+	color: white;
+	font-family: 'Reem Kufi', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	line-height: 60px;
+	color: #1A6F55;
+}
+
+.title-sidebar-separator {
+	border: 1px solid black;
+}
+
+.menu-container {
+	margin-top: 10%;
+	text-align: center;
+}
+
+.menu-container h3 {
+	color: white;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*login xhtml*/
+#content {
+	display: flex;
+	font-family: 'Roboto';
+	flex-direction: column;
+	align-items: center !important;
+}
+
+.login-container h1 {
+	font-family: 'Reem Kufi';
+	text-align: center;
+	margin: 50% 10% 10% 5%;
+	font-size: 3em;
+	color: #1A6F55;
+	text-decoration: underline;
+	text-decoration-color: black;
+}
+
+.login-container h2 {
+	margin: 2% 0 2% 0;
+	font-family: 'Roboto';
+	color: #00a884;
+	text-align: center;
+}
+
+.login-container {
+	justify-content: center !important;
+}
+
+.button-login-container {
+	flex: 1;
+	max-width: 270px;
+	margin-top: 5%;
+}
+
+.button-login-container a {
+	font-size: 10px;
+	color: #00a884;
+}
+
+.button-login-container a:hover {
+	color: #05785f;
+}
+
+.button-login {
+	background: #00a884 !important;
+	border-color: #00a884 !important;
+}
+
+.button-login:active {
+	box-shadow: 0 0 0 0.2em #77fce0 !important;
+}
+
+.field-login-container>span>input, .field-login-container>span>span>input
+	{
+	flex: 1;
+	min-width: 270px;
+	justify-self: center;
+}
+
+.field-login-container {
+	margin-top: 10%;
+}
+
+/*register.xhtml*/
+.formulario-container {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center;
+	text-align: center;
+}
+
+.p-field, .ponto-endereco-field {
+	display: flex !important;
+	flex-direction: column !important;
+	min-width: 80%;
+	max-width: 600px;
+	margin: 2% 0 2% 0 !important;
+}
+
+.botao-ponto-criar {
+	min-width: 100%;
+	max-width: 600px;
+}
+
+.ui-calendar {
+	margin: 5% 0 5% 0;
+}
+
+.botao-ponto-criar-container {
+	text-align: center;
+}
+
+.container-endereco-num-end {
+	display: flex;
+	align-content: center;
+}
+
+.endereco-num {
+	max-width: 100px;
+}
+
+#ponto-endereco-log {
+	max-width: 300px;
+}
+
+.container-endereco-num-end div {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}
+.p-field label{
+	margin-bottom: 1%;
+}
