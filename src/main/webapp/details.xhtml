@@ -9,33 +9,30 @@
     <ui:define name="title">Detalhe</ui:define>
     <ui:define name="content">
         <h:form>
-            <p:growl id="statusMessage" showDetail="false">
-                <p:autoUpdate/>
-            </p:growl>
 
             <div class="formulario-container">
                 <p>
                     <h1>TRAVELLER</h1>
                 </p>
                 <p>
-                    <h3>Editar Ponto turístico</h3>
+                    <h3>Ponto turístico</h3>
                 </p>
 
                 <div class="p-field">
                     <p:outputLabel for="nome-ponto" styleClass="p-d-block">Nome</p:outputLabel>
-                    <h:outputText value="#{pontoBean.pontoTuristico.nome}"/>
+                    <h:outputText id="nome-ponto" value="#{pontoBean.pontoTuristico.nome}"/>
 
                 </div>
                 <div class="p-field ">
                     <p:outputLabel for="ponto-categoria" styleClass="p-d-block">Categoria</p:outputLabel>
-                    <h:outputText value="#{pontoBean.pontoTuristico.categoria.descricao}"/>
+                    <h:outputText id="ponto-categoria" value="#{pontoBean.pontoTuristico.categoria.descricao}"/>
 
                 </div>
 
                 <div class="p-field	">
 
                     <p:outputLabel for="ponto-funcionamento" styleClass="p-d-block">Funcionamento</p:outputLabel>
-                    <h:outputText value="#{pontoBean.pontoTuristico.horarioFuncionamento}"/>
+                    <h:outputText id="ponto-funcionamento" value="#{pontoBean.pontoTuristico.horarioFuncionamento}"/>
 
                 </div>
                 <div class="p-field">
@@ -45,34 +42,34 @@
                 </div>
                 <div class="p-field ">
                     <p:outputLabel for="input2" value="Custo"/>
-                    <h:outputText value="#{pontoBean.pontoTuristico.preco}"/>
+                    <h:outputText id="input2"  value="#{pontoBean.pontoTuristico.preco}"/>
 
                 </div>
                 <div class="p-field">
                     <p:outputLabel for="descricao-ponto" value="Descrição"/>
-                    <h:outputText value="#{pontoBean.pontoTuristico.descricao}"/>
+                    <h:outputText id="descricao-ponto" value="#{pontoBean.pontoTuristico.descricao}"/>
 
                 </div>
                 <div class="p-field">
                     <p:outputLabel for="ponto-link" styleClass="p-d-block">Site oficial</p:outputLabel>
-                    <h:outputText value="#{pontoBean.pontoTuristico.urlSiteOficial}"/>
+                    <h:outputText id="ponto-link" value="#{pontoBean.pontoTuristico.urlSiteOficial}"/>
 
                 </div>
                 <div class="p-field">
                     <p:outputLabel for="ponto-foto" styleClass="p-d-block">URL foto</p:outputLabel>
-                    <h:outputText value="#{pontoBean.pontoTuristico.urlFoto}"/>
+                    <h:outputText id="ponto-foto" value="#{pontoBean.pontoTuristico.urlFoto}"/>
 
                 </div>
 
                 <div class="p-field ponto-endereco">
                     <div class="">
                         <p:outputLabel for="ponto-endereco-log" styleClass="p-d-block">Endereço</p:outputLabel>
-                        <h:outputText value="#{pontoBean.pontoTuristico.endereco.logradouro}"/>
+                        <h:outputText  id="ponto-endereco-log" value="#{pontoBean.pontoTuristico.endereco.logradouro}"/>
 
                     </div>
                     <div class="">
                         <p:outputLabel for="ponto-endereco-log-num" styleClass="p-d-block">Número</p:outputLabel>
-                        <h:outputText value="#{pontoBean.pontoTuristico.endereco.numero}"/>
+                        <h:outputText id="ponto-endereco-log-num" value="#{pontoBean.pontoTuristico.endereco.numero}"/>
 
                     </div>
                 </div>
@@ -80,13 +77,13 @@
                     <div class="container-endereco-num-end">
                         <div class="">
                             <p:outputLabel for="ponto-endereco-cidade" styleClass="p-d-block">Cidade</p:outputLabel>
-                            <h:outputText value="#{pontoBean.pontoTuristico.endereco.cidade}"/>
+                            <h:outputText id="ponto-endereco-cidade" value="#{pontoBean.pontoTuristico.endereco.cidade}"/>
 
 
                         </div>
                         <div class="">
                             <p:outputLabel for="ponto-endereco-estado" styleClass="p-d-block">Estado</p:outputLabel>
-                            <h:outputText value="#{pontoBean.pontoTuristico.endereco.estado}"/>
+                            <h:outputText id="ponto-endereco-estado" value="#{pontoBean.pontoTuristico.endereco.estado}"/>
 
 
                         </div>
@@ -95,14 +92,14 @@
 
                     <div class="ponto-endereco-field">
                         <p:outputLabel for="ponto-endereco-log-cep" styleClass="p-d-block">CEP</p:outputLabel>
-                        <h:outputText value="#{pontoBean.pontoTuristico.endereco.cep}"/>
+                        <h:outputText id="ponto-endereco-log-cep" value="#{pontoBean.pontoTuristico.endereco.cep}"/>
 
 
                     </div>
                     <div class="ponto-endereco-field">
                         <p:outputLabel for="ponto-endereco-log-complemento"
                                        styleClass="p-d-block">Complemento</p:outputLabel>
-                        <h:outputText value="#{pontoBean.pontoTuristico.endereco.complemento}"/>
+                        <h:outputText id="ponto-endereco-log-complemento" value="#{pontoBean.pontoTuristico.endereco.complemento}"/>
 
 
                     </div>
