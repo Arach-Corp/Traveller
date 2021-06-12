@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-        xmlns:p="http://primefaces.org/ui%22%3E
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">Home</ui:define>
+<ui:composition template="/template.xhtml">
+	<ui:define name="title">Home</ui:define>
 
-        <f:facet name="last">
-            <h:outputStylesheet library="css" name="home.css" />
-        </f:facet>
-        <h:outputStylesheet library="css" name="home.css" />
-        <ui:define name="content">
-        <div class="home-container">
-        <div class="logo-home">
-        <h1>TRAVELLER</h1>
-        <h3>Turismo e pontos turísticos...</h3>
-        </div>
-        <div class="home-button-container">
-        <a href="login.xhtml">Entrar</a>
-        </div>
+	<f:facet name="last">
+		<h:outputStylesheet library="css" name="home.css" />
+	</f:facet>
+	<h:outputStylesheet library="css" name="home.css" />
 
-        </div>
 
-    </ui:define>
+	<ui:define name="content">
+		<div class="home-container">
+			<div class="logo-home">
+				<h1>TRAVELLER</h1>
+				<h3>Turismo e pontos turÃ­sticos...</h3>
+			</div>
+			<div class="home-button-container">
+				<a href="login.xhtml">Entrar</a>
+			</div>
+
+		</div>
+
+	</ui:define>
 
 </ui:composition>
 </html>
