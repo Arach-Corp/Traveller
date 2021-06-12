@@ -39,7 +39,7 @@ public class PontoTuristico {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @OneToOne(mappedBy = "pontoTuristico")
+    @OneToOne(mappedBy = "pontoTuristico", cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
@@ -155,6 +155,14 @@ public class PontoTuristico {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public List<Dica> getDicas() {
+        return dicas;
     }
 
     @Override

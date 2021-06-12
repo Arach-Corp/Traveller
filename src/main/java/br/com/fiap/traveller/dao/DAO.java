@@ -25,7 +25,7 @@ public abstract class DAO<E, K> implements GenericDAO<E, K> {
 
     @Override
     public List<E> findAll() {
-        return em.createQuery("FROM " + clazz.getName()).getResultList();
+        return em.createQuery("From " + clazz.getName(), clazz).getResultList();
     }
 
     @Override
@@ -50,5 +50,13 @@ public abstract class DAO<E, K> implements GenericDAO<E, K> {
             e.printStackTrace();
             throw new CommitException(e.getMessage());
         }
+    }
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
     }
 }

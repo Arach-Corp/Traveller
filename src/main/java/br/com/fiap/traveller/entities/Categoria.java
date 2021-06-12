@@ -48,6 +48,7 @@ public class Categoria {
         return this.pontosTuristicos;
     }
 
+
     @Override
     public String toString() {
         return "Categoria{" +

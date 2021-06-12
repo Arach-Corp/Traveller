@@ -26,6 +26,16 @@
 					<p:column headerText="Nome">
 						<h:outputText value="#{ponto.nome}" />
 					</p:column>
+
+					<p:column headerText="Visualizar">
+						<p:commandLink type="button" icon="pi pi-search"
+									   styleClass="rounded-button ui-button-success ui-button-flat"
+									   action="details.xhtml">Abrir
+							<f:setPropertyActionListener value="#{ponto}"
+														 target="#{pontoBean.pontoTuristico}" />
+						</p:commandLink>
+					</p:column>
+
 					<p:column headerText="Editar">
 						<p:commandLink type="button" icon="pi pi-search"
 							styleClass="rounded-button ui-button-success ui-button-flat"

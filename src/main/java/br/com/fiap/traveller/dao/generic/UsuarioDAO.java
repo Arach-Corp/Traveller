@@ -4,4 +4,5 @@ import br.com.fiap.traveller.dao.GenericDAO;
 import br.com.fiap.traveller.entities.Usuario;
 
 public interface UsuarioDAO extends GenericDAO<Usuario, Long> {
+    Usuario findByEmail(String email);
 }

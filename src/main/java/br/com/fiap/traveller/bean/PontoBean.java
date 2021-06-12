@@ -1,6 +1,10 @@
 package br.com.fiap.traveller.bean;
 
+import br.com.fiap.traveller.dao.exceptions.CommitException;
+import br.com.fiap.traveller.dao.exceptions.EntityNotFoundException;
+import br.com.fiap.traveller.dao.generic.CategoriaDAO;
 import br.com.fiap.traveller.dao.generic.PontoTuristicoDAO;
+import br.com.fiap.traveller.dao.impl.CategoriaDAOImpl;
 import br.com.fiap.traveller.dao.impl.PontoTuristicoDAOImpl;
 import br.com.fiap.traveller.entities.Categoria;
 import br.com.fiap.traveller.entities.Endereco;
@@ -8,9 +12,9 @@ import br.com.fiap.traveller.entities.PontoTuristico;
 import br.com.fiap.traveller.sigleton.EntityManagerFactorySingleton;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -21,48 +25,43 @@ public class PontoBean {
 	private Endereco endereco = new Endereco();
 	private Categoria categoria = new Categoria();
 
+
+	private CategoriaDAO categoriaDAO = new CategoriaDAOImpl(EntityManagerFactorySingleton.getInstance().createEntityManager());
 	private PontoTuristicoDAO dao = new PontoTuristicoDAOImpl(EntityManagerFactorySingleton.getInstance().createEntityManager());
 	private final FacesContext context = FacesContext.getCurrentInstance();
 
-
+	public List<PontoTuristico> getPontosCadastrados() {
+		return dao.findAll();
+	}
 
 	public void criar() {
 		System.out.println("Ponto turistico criado...");
 	}
 
 	public String editar() {
+		try	{
+			ponto = dao.save(ponto);
+			dao.commit();
+		} catch (CommitException e) {
+			e.printStackTrace();
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Não foi possível atualizar os dados de ponto turistico", e.getMessage()));
+			return "edit?faces-redirect=true";
+		}
 		context.getExternalContext().getSessionMap().put("ponto", ponto);
 		return "edit?faces-redirect=true";
 	}
 
 	private void excluir() {
-
-		context.getExternalContext().getSessionMap().put("ponto", ponto);
-
-		System.out.println("asdasd");
+		try{
+			dao.deleteById(ponto.getId());
+		} catch (EntityNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public List<PontoTuristico> getPontosCadastrados() {
 
-//		List<PontoTuristico> pontos = new ArrayList<>();
-//		PontoTuristico pontoturistico = new PontoTuristico();
-//		pontoturistico.setNome("lalalalalala");
-//		pontoturistico.setId(Long.parseLong("1"));
-//
-//		PontoTuristico pontoturistico2 = new PontoTuristico();
-//		pontoturistico2.setNome("lalalalalal222222a");
-//		pontoturistico2.setId(Long.parseLong("2"));
-//
-//		PontoTuristico pontoturistico3 = new PontoTuristico();
-//		pontoturistico3.setNome("lalalaasdasdasdalalala");
-//		pontoturistico3.setId(Long.parseLong("3"));
-//
-//		pontos.add(pontoturistico);
-//		pontos.add(pontoturistico2);
-//		pontos.add(pontoturistico3);
 
-		return dao.findAll();
-	}
+
 
 	public PontoTuristico getPonto() {
 		return ponto;
@@ -100,4 +99,7 @@ public class PontoBean {
 		this.ponto = pontoTuristico;
 	}
 
+	public List<Categoria> getCategorias(){
+		return categoriaDAO.findAll();
+	}
 }
